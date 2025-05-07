@@ -1,22 +1,22 @@
-chrome.runtime.onInstalled.addListener(async ({ reason }) => {
-	console.info('chrome ext install listener: reason', reason);
+// chrome.runtime.onInstalled.addListener(async ({ reason }) => {
+// 	console.info('chrome ext install listener: reason', reason);
 
-	if (reason == 'install') {
-		await chrome.storage.local.set({ 'gene-lens-enabled': true });
-	}
+// 	if (reason == 'install') {
+// 		await chrome.storage.local.set({ 'gene-lens-enabled': true });
+// 	}
 
-	const isGeneLensEnabled = await chrome.storage.local.get('gene-lens-enabled');
+// 	// const isGeneLensEnabled = await chrome.storage.local.get('gene-lens-enabled');
 
-	if (isGeneLensEnabled) {
-		chrome.action.setBadgeText({
-			text: 'ON',
-		});
+// 	// if (isGeneLensEnabled) {
+// 	// 	chrome.action.setBadgeText({
+// 	// 		text: 'ON',
+// 	// 	});
 
-		chrome.action.setBadgeBackgroundColor({
-			color: 'black',
-		});
-	}
-});
+// 	// 	chrome.action.setBadgeBackgroundColor({
+// 	// 		color: 'black',
+// 	// 	});
+// 	// }
+// });
 
 chrome.runtime.onMessage.addListener((message, _, sendResponse) => {
 	if (message.type === 'FETCH_GENE') {
