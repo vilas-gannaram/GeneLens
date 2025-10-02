@@ -9,16 +9,13 @@
 	"content_scripts": [
 		{
 			"matches": ["<all_urls>"],
-			"js": ["content-script.js"]
+			"js": ["content-script.js"],
+			"css": ["content-script.css"]
 		}
 	],
 	"web_accessible_resources": [
 		{
-			"resources": [
-				"style.css",
-				"data/genes-list.json",
-				"templates/gene-popup.html"
-			],
+			"resources": ["genes-list.json"],
 			"matches": ["<all_urls>"]
 		}
 	],

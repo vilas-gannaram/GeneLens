@@ -1,0 +1,150 @@
+/* CSS Reset */
+
+#gene-inflow-root,
+#gene-inflow-root html,
+#gene-inflow-root body,
+#gene-inflow-root div,
+#gene-inflow-root span,
+#gene-inflow-root applet,
+#gene-inflow-root object,
+#gene-inflow-root iframe,
+#gene-inflow-root h1,
+#gene-inflow-root h2,
+#gene-inflow-root h3,
+#gene-inflow-root h4,
+#gene-inflow-root h5,
+#gene-inflow-root h6,
+#gene-inflow-root p,
+#gene-inflow-root blockquote,
+#gene-inflow-root pre,
+#gene-inflow-root a,
+#gene-inflow-root abbr,
+#gene-inflow-root acronym,
+#gene-inflow-root address,
+#gene-inflow-root big,
+#gene-inflow-root cite,
+#gene-inflow-root code,
+#gene-inflow-root del,
+#gene-inflow-root dfn,
+#gene-inflow-root em,
+#gene-inflow-root img,
+#gene-inflow-root ins,
+#gene-inflow-root kbd,
+#gene-inflow-root q,
+#gene-inflow-root s,
+#gene-inflow-root samp,
+#gene-inflow-root small,
+#gene-inflow-root strike,
+#gene-inflow-root strong,
+#gene-inflow-root sub,
+#gene-inflow-root sup,
+#gene-inflow-root tt,
+#gene-inflow-root var,
+#gene-inflow-root b,
+#gene-inflow-root u,
+#gene-inflow-root i,
+#gene-inflow-root center,
+#gene-inflow-root dl,
+#gene-inflow-root dt,
+#gene-inflow-root dd,
+#gene-inflow-root ol,
+#gene-inflow-root ul,
+#gene-inflow-root li,
+#gene-inflow-root fieldset,
+#gene-inflow-root form,
+#gene-inflow-root label,
+#gene-inflow-root legend,
+#gene-inflow-root table,
+#gene-inflow-root caption,
+#gene-inflow-root tbody,
+#gene-inflow-root tfoot,
+#gene-inflow-root thead,
+#gene-inflow-root tr,
+#gene-inflow-root th,
+#gene-inflow-root td,
+#gene-inflow-root article,
+#gene-inflow-root aside,
+#gene-inflow-root canvas,
+#gene-inflow-root details,
+#gene-inflow-root embed,
+#gene-inflow-root figure,
+#gene-inflow-root figcaption,
+#gene-inflow-root footer,
+#gene-inflow-root header,
+#gene-inflow-root hgroup,
+#gene-inflow-root menu,
+#gene-inflow-root nav,
+#gene-inflow-root output,
+#gene-inflow-root ruby,
+#gene-inflow-root section,
+#gene-inflow-root summary,
+#gene-inflow-root time,
+#gene-inflow-root mark,
+#gene-inflow-root audio,
+#gene-inflow-root video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	/* Removed 'font: inherit;' and 'vertical-align: baseline;' from the list above. */
+	/* They are not needed for the root itself, but are for descendants. */
+}
+
+/* Specific properties that are better applied to descendants */
+#gene-inflow-root *,
+#gene-inflow-root *::before,
+#gene-inflow-root *::after {
+	font: inherit;
+	vertical-align: baseline;
+	box-sizing: border-box; /* A common, highly recommended addition to resets */
+}
+
+/*************** Styles *****************/
+
+#gene-inflow-root * {
+	line-height: 1.6;
+}
+
+#gene-inflow-root {
+	position: relative;
+	overflow: visible;
+}
+
+#gene-inflow-root .gene-symbol-trigger {
+	cursor: pointer;
+
+	text-decoration: underline;
+	text-decoration-style: double;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 5px;
+}
+
+#gene-inflow-root .gene-popover {
+	display: block;
+
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 10000;
+
+	min-width: 200px;
+	max-width: 60ch;
+
+	color: rgba(0, 0, 0, 0.8);
+	background-color: whitesmoke;
+	font-family: Arial, Helvetica, sans-serif;
+
+	padding: 8px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+}
+
+#gene-inflow-root .gene-popover h2#gene-symbol {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+#gene-inflow-root .gene-popover h3#gene-name {
+	margin-top: 8px;
+}

@@ -1,24 +1,54 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": true,
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
-  },
-  "include": ["src"]
+	"extends": "@tsconfig/svelte/tsconfig.json",
+	"compilerOptions": {
+		"target": "ESNext",
+		"useDefineForClassFields": true,
+		"module": "ESNext",
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"checkJs": true,
+		"isolatedModules": true,
+		"moduleDetection": "force",
+		"strict": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "bundler",
+		"baseUrl": ".",
+		"paths": {
+			"$lib": ["./src/lib"],
+			"$lib/*": ["./src/lib/*"],
+			"@/*": ["./src/*"]
+		},
+		"types": ["chrome", "vite/client"]
+	},
+	"include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
+	"exclude": ["node_modules", "dist"]
 }
+
+// {
+// 	"compilerOptions": {
+// 		"target": "ESNext",
+// 		"lib": ["ESNext", "WebWorker"],
+// 		"types": ["chrome"],
+// 		"module": "ESNext",
+// 		// "moduleResolution": "Node",
+// 		"skipLibCheck": true,
+
+// 		/* Bundler mode */
+// 		"moduleResolution": "bundler",
+// 		"allowImportingTsExtensions": true,
+// 		"verbatimModuleSyntax": true,
+// 		"moduleDetection": "force",
+// 		"noEmit": true,
+
+// 		/* Linting */
+// 		"strict": true,
+// 		"noUnusedLocals": true,
+// 		"noUnusedParameters": true,
+// 		"erasableSyntaxOnly": true,
+// 		"noFallthroughCasesInSwitch": true,
+// 		"noUncheckedSideEffectImports": true
+// 	}
+// }
