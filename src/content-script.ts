@@ -1,6 +1,6 @@
 import { mount } from 'svelte';
-import GeneOverlay from '$lib/components/gene-overlay.svelte';
-import './global.css';
+import GeneSymbol from '$lib/components/gene-symbol.svelte';
+import appStyles from './app.css?inline';
 
 document.addEventListener('dblclick', () => {
 	const selection = document.getSelection();
@@ -8,10 +8,24 @@ document.addEventListener('dblclick', () => {
 
 	const range = selection.getRangeAt(0);
 	const text = selection.toString().trim();
-
 	if (!text) return;
 
-	// Clear the selection immediately to prevent the original text from staying highlighted
+	// Prevent nested overlays
+	if (range.commonAncestorContainer.nodeType === Node.ELEMENT_NODE) {
+		const element = range.commonAncestorContainer as Element;
+		if (element.closest('.gene-overlay-host')) return;
+	} else if (
+		range.commonAncestorContainer.parentElement?.closest('.gene-overlay-host')
+	) {
+		return;
+	}
+
+	// Store range information before async operation
+	const startContainer = range.startContainer;
+	const startOffset = range.startOffset;
+	const endContainer = range.endContainer;
+	const endOffset = range.endOffset;
+
 	selection.removeAllRanges();
 
 	chrome.runtime.sendMessage(
@@ -23,15 +37,39 @@ document.addEventListener('dblclick', () => {
 			}
 
 			const gene = response.gene || null;
-			const componentContainer = document.createElement('span');
 
-			range.deleteContents();
-			range.insertNode(componentContainer);
+			try {
+				// Recreate the range
+				const newRange = document.createRange();
+				newRange.setStart(startContainer, startOffset);
+				newRange.setEnd(endContainer, endOffset);
 
-			mount(GeneOverlay, {
-				target: componentContainer,
-				props: { gene, symbol: text },
-			});
-		}
+				// Create wrapper with shadow DOM
+				const wrapper = document.createElement('span');
+				wrapper.className = 'gene-overlay-host'; // For preventing nested overlays
+				const shadow = wrapper.attachShadow({ mode: 'open' });
+
+				// Inject styles into shadow DOM
+				const style = document.createElement('style');
+				style.textContent = appStyles;
+				shadow.appendChild(style);
+
+				// Create container for Svelte component
+				const componentContainer = document.createElement('span');
+				shadow.appendChild(componentContainer);
+
+				// Insert wrapper into DOM first
+				newRange.deleteContents();
+				newRange.insertNode(wrapper);
+
+				// Mount Svelte component with context set to shadow root
+				mount(GeneSymbol, {
+					target: componentContainer,
+					props: { gene, symbol: text },
+				});
+			} catch (err) {
+				console.error('Failed to insert component:', err);
+			}
+		},
 	);
 });
