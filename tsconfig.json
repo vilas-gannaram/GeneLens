@@ -26,29 +26,3 @@
 	"include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
 	"exclude": ["node_modules", "dist"]
 }
-
-// {
-// 	"compilerOptions": {
-// 		"target": "ESNext",
-// 		"lib": ["ESNext", "WebWorker"],
-// 		"types": ["chrome"],
-// 		"module": "ESNext",
-// 		// "moduleResolution": "Node",
-// 		"skipLibCheck": true,
-
-// 		/* Bundler mode */
-// 		"moduleResolution": "bundler",
-// 		"allowImportingTsExtensions": true,
-// 		"verbatimModuleSyntax": true,
-// 		"moduleDetection": "force",
-// 		"noEmit": true,
-
-// 		/* Linting */
-// 		"strict": true,
-// 		"noUnusedLocals": true,
-// 		"noUnusedParameters": true,
-// 		"erasableSyntaxOnly": true,
-// 		"noFallthroughCasesInSwitch": true,
-// 		"noUncheckedSideEffectImports": true
-// 	}
-// }
