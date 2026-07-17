@@ -27,7 +27,7 @@
 	},
 	"web_accessible_resources": [
 		{
-			"resources": ["genes-list.json"],
+			"resources": ["hgnc_dataset.json"],
 			"matches": ["<all_urls>"]
 		}
 	],

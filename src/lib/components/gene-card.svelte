@@ -21,10 +21,10 @@
 	<div class="gene-card">
 		<Header {gene} />
 		<BasicInfo {gene} />
-		<PrimaryIds {gene} />
-		<AdditionalResources {gene} />
 		<Aliases {gene} />
 		<GeneGroups {gene} />
+		<PrimaryIds {gene} />
+		<AdditionalResources {gene} />
 	</div>
 {:else}
 	<div class="gene-card error">

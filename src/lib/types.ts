@@ -24,11 +24,13 @@ export interface TGene {
 	orphanet?: number;
 	merops?: string;
 	lncipedia?: string;
+	cosmic?: string;
 
 	// Additional data
 	gene_group?: string[];
 	gene_group_id?: number[];
 	alias_symbol?: string | string[];
+	alias_name?: string[];
 	prev_symbol?: string[];
 	prev_name?: string[];
 
@@ -39,6 +41,30 @@ export interface TGene {
 	ena?: string[];
 	lsdb?: string[];
 	rna_central_id?: string[];
+
+	// Ensembl enrichment (genome build GRCh38)
+	ensembl_description?: string;
+	chromosome?: string;
+	start?: number;
+	end?: number;
+	strand?: number;
+	biotype?: string;
+
+	// Specialist family/database cross-references
+	iuphar?: string;
+	mirbase?: string;
+	horde_id?: string;
+	imgt?: string;
+	homeodb?: number;
+	gtrnadb?: string;
+	'mamit-trnadb'?: number;
+	lncrnadb?: string;
+	snornabase?: string;
+	enzyme_id?: string[];
+	bioparadigms_slc?: string;
+	cd?: string;
+	'pseudogene.org'?: string;
+	curator_notes?: string[];
 
 	// Dates
 	date_approved_reserved?: string;

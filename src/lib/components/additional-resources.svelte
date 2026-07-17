@@ -7,13 +7,36 @@
 		if (!arr || arr.length === 0) return '';
 		return arr.join(', ');
 	}
+
+	function maneSelectHref(id: string) {
+		return id.startsWith('ENST')
+			? `https://www.ensembl.org/Homo_sapiens/Transcript/Summary?t=${id}`
+			: `https://www.ncbi.nlm.nih.gov/nuccore/${id}`;
+	}
 </script>
 
-{#if gene.uniprot_ids || gene.omim_id || gene.refseq_accession}
+{#if gene.uniprot_ids || gene.omim_id || gene.refseq_accession || gene.mane_select}
 	<div class="section">
 		<h3 class="section-title">Additional Resources</h3>
 
 		<ul class="list">
+			{#if gene.mane_select?.length}
+				<li class="row">
+					<span class="label">MANE Select:</span>
+					<div class="chip-group">
+						{#each gene.mane_select as id}
+							<a
+								href={maneSelectHref(id)}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{id}
+							</a>
+						{/each}
+					</div>
+				</li>
+			{/if}
+
 			{#if gene.uniprot_ids?.length}
 				<li class="row">
 					<span class="label">UniProt:</span>

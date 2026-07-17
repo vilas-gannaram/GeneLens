@@ -2,6 +2,12 @@
 	import type { TGene } from '$lib/types';
 
 	let { gene }: { gene: TGene } = $props();
+
+	// Ensembl descriptions carry a trailing "[Source:HGNC Symbol;Acc:...]" tag
+	// that's redundant for a reader — strip it before displaying.
+	let description = $derived(
+		gene.ensembl_description?.replace(/\s*\[Source:.*?\]\s*$/, ''),
+	);
 </script>
 
 <div class="gene-header">
@@ -15,6 +21,10 @@
 		<span class="status {gene.status === 'Approved' ? 'approved' : 'other'}">
 			{gene.status}
 		</span>
+	{/if}
+
+	{#if description}
+		<p class="gene-description">{description}</p>
 	{/if}
 </div>
 
@@ -35,6 +45,13 @@
 		margin-top: 4px;
 		font-size: 13px;
 		color: var(--muted-foreground);
+	}
+
+	.gene-description {
+		margin-top: 8px;
+		font-size: 13px;
+		line-height: 1.4;
+		color: var(--sidebar-foreground);
 	}
 
 	.status {

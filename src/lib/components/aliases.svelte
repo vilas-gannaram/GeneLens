@@ -9,7 +9,7 @@
 	}
 </script>
 
-{#if gene.alias_symbol || gene.prev_symbol}
+{#if gene.alias_symbol || gene.prev_symbol || gene.alias_name || gene.prev_name}
 	<div class="section">
 		<h3 class="section-title">Aliases & Previous</h3>
 
@@ -26,8 +26,22 @@
 
 		{#if gene.prev_symbol?.length}
 			<div class="row">
-				<span class="label">Previous:</span>
+				<span class="label">Previous symbol:</span>
 				<span>{formatArray(gene.prev_symbol)}</span>
+			</div>
+		{/if}
+
+		{#if gene.alias_name?.length}
+			<div class="row">
+				<span class="label">Also known as:</span>
+				<span>{formatArray(gene.alias_name)}</span>
+			</div>
+		{/if}
+
+		{#if gene.prev_name?.length}
+			<div class="row">
+				<span class="label">Former name:</span>
+				<span>{formatArray(gene.prev_name)}</span>
 			</div>
 		{/if}
 	</div>

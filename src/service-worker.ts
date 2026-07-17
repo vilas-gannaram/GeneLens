@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	if (message.type === 'FETCH_GENE') {
 		console.log('📩 Received message in background:', message.symbol);
 
-		fetch(chrome.runtime.getURL('genes-list.json'))
+		fetch(chrome.runtime.getURL('hgnc_dataset.json'))
 			.then((res) => res.json())
 			.then((data) => sendResponse({ gene: data[message.symbol] }))
 			.catch((err) => sendResponse({ error: err.message }));

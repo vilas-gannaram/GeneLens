@@ -4,12 +4,19 @@
 	let { gene }: { gene: TGene } = $props();
 </script>
 
-{#if gene.locus_type || gene.location}
+{#if gene.locus_type || gene.location || gene.biotype}
 	<div class="section">
 		{#if gene.locus_type}
 			<div class="row">
 				<span class="label">Type:</span>
 				<span>{gene.locus_type}</span>
+			</div>
+		{/if}
+
+		{#if gene.biotype}
+			<div class="row">
+				<span class="label">Biotype:</span>
+				<span>{gene.biotype}</span>
 			</div>
 		{/if}
 
