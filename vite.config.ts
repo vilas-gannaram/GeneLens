@@ -18,7 +18,8 @@ export default defineConfig({
 		rollupOptions: {
 			input: {
 				'service-worker': path.resolve(__dirname, 'src/service-worker.ts'),
-				'content-script': path.resolve(__dirname, 'src/content-script.ts')
+				'content-script': path.resolve(__dirname, 'src/content-script.ts'),
+				'side-panel': path.resolve(__dirname, 'src/side-panel.ts')
 			},
 			output: { entryFileNames: '[name].js', assetFileNames: '[name].[ext]' }
 		}
