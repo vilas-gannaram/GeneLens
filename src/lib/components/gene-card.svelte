@@ -15,6 +15,18 @@
 		gene: TGene | null;
 		symbol: string;
 	} = $props();
+
+	function openLocusZoom() {
+		if (!gene?.chromosome || gene.start == null || gene.end == null) return;
+
+		const url = chrome.runtime.getURL(
+			`locuszoom.html?symbol=${encodeURIComponent(gene.symbol)}&chr=${encodeURIComponent(
+				gene.chromosome,
+			)}&start=${gene.start}&end=${gene.end}`,
+		);
+
+		chrome.windows.create({ url, type: 'popup', width: 960, height: 680 });
+	}
 </script>
 
 {#if gene}
@@ -25,6 +37,12 @@
 		<GeneGroups {gene} />
 		<PrimaryIds {gene} />
 		<AdditionalResources {gene} />
+
+		{#if gene.chromosome && gene.start != null && gene.end != null}
+			<button type="button" class="locuszoom-button" onclick={openLocusZoom}>
+				Open LocusZoom
+			</button>
+		{/if}
 	</div>
 {:else}
 	<div class="gene-card error">
@@ -52,5 +70,20 @@
 		margin-top: 4px;
 		font-size: 13px;
 		color: var(--sidebar-foreground);
+	}
+
+	.locuszoom-button {
+		margin-top: 4px;
+		padding: 6px 12px;
+		border: 1px solid var(--sidebar-border);
+		border-radius: var(--radius);
+		background: var(--sidebar);
+		color: var(--sidebar-primary);
+		font-size: 13px;
+		cursor: pointer;
+	}
+
+	.locuszoom-button:hover {
+		background: var(--sidebar-accent);
 	}
 </style>

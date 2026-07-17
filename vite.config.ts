@@ -19,7 +19,8 @@ export default defineConfig({
 			input: {
 				'service-worker': path.resolve(__dirname, 'src/service-worker.ts'),
 				'content-script': path.resolve(__dirname, 'src/content-script.ts'),
-				'side-panel': path.resolve(__dirname, 'src/side-panel.ts')
+				'side-panel': path.resolve(__dirname, 'src/side-panel.ts'),
+				locuszoom: path.resolve(__dirname, 'src/locuszoom.ts')
 			},
 			output: { entryFileNames: '[name].js', assetFileNames: '[name].[ext]' }
 		}

@@ -32,6 +32,10 @@ double-click or a quick search, right where you're already reading.
   wants to dig deeper.
 - Works entirely offline at lookup time — no network request is made when
   you search, so it's fast and doesn't leak what you're reading to anyone.
+  The one exception is the optional **Open LocusZoom** button (see below).
+- **Open LocusZoom** on any gene with known coordinates to see it plotted in
+  its genomic context — nearby genes, exon structure, and gnomAD constraint
+  metrics — in a separate popup window.
 
 ## How to use it
 
@@ -58,6 +62,10 @@ double-click or a quick search, right where you're already reading.
   the extension and regenerated periodically from HGNC and Ensembl — it's
   not a live query against those services, so very recently approved or
   renamed symbols may not be reflected until the next update.
+- **LocusZoom is the one online feature.** Clicking "Open LocusZoom" fetches
+  live gene-track and constraint data from the UMich PortalDev API and
+  gnomAD — this is the only time Gene Lens makes a network request, and only
+  when you explicitly click that button.
 
 ## Installation
 
