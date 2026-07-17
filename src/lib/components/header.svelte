@@ -20,7 +20,7 @@
 
 <style>
 	.gene-header {
-		border-bottom: 1px solid #e5e7eb;
+		border-bottom: 1px solid var(--sidebar-border);
 		padding-bottom: 8px;
 		margin-bottom: 12px;
 	}
@@ -28,13 +28,13 @@
 	.gene-title {
 		font-size: 20px;
 		font-weight: 700;
-		color: #111827;
+		color: var(--sidebar-foreground);
 	}
 
 	.gene-subtitle {
 		margin-top: 4px;
 		font-size: 13px;
-		color: #374151;
+		color: var(--muted-foreground);
 	}
 
 	.status {
@@ -47,12 +47,12 @@
 	}
 
 	.status.approved {
-		background: #dcfce7;
-		color: #166534;
+		background: var(--sidebar-accent);
+		color: var(--sidebar-accent-foreground);
 	}
 
 	.status.other {
-		background: #f3f4f6;
-		color: #374151;
+		background: var(--muted);
+		color: var(--muted-foreground);
 	}
 </style>

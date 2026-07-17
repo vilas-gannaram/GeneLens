@@ -37,20 +37,11 @@
 
 <style>
 	.gene-card {
-		background: #ffffff;
-		border: 1px solid #e5e7eb;
-		border-radius: 8px;
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-
-		padding: 12px 16px;
-		color: #111827;
 		font-size: 14px;
 	}
 
 	.gene-card.error {
-		background: #fef2f2;
-		border-color: #fca5a5;
-		color: #7f1d1d;
+		color: var(--destructive);
 	}
 
 	.error-title {
@@ -60,5 +51,6 @@
 	.error-text {
 		margin-top: 4px;
 		font-size: 13px;
+		color: var(--sidebar-foreground);
 	}
 </style>

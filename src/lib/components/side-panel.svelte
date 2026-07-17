@@ -82,17 +82,13 @@
 
 <style>
 	.panel {
-		font-family:
-			system-ui,
-			-apple-system,
-			sans-serif;
 		padding: 16px;
 	}
 
 	.title {
 		font-size: 16px;
 		font-weight: 700;
-		color: #111827;
+		color: var(--sidebar-foreground);
 		margin-bottom: 12px;
 	}
 
@@ -105,27 +101,34 @@
 	input {
 		flex: 1;
 		padding: 6px 10px;
-		border: 1px solid #d1d5db;
-		border-radius: 6px;
+		border: 1px solid var(--input);
+		border-radius: var(--radius);
+		background: var(--background);
+		color: var(--foreground);
 		font-size: 14px;
+	}
+
+	input:focus-visible {
+		outline: 2px solid var(--sidebar-ring);
+		outline-offset: 1px;
 	}
 
 	button {
 		padding: 6px 12px;
 		border: none;
-		border-radius: 6px;
-		background: #2563eb;
-		color: white;
+		border-radius: var(--radius);
+		background: var(--sidebar-primary);
+		color: var(--sidebar-primary-foreground);
 		font-size: 14px;
 		cursor: pointer;
 	}
 
 	button:hover {
-		background: #1d4ed8;
+		opacity: 0.9;
 	}
 
 	.hint {
-		color: #6b7280;
+		color: var(--muted-foreground);
 		font-size: 13px;
 	}
 </style>

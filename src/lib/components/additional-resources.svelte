@@ -66,7 +66,7 @@
 	.section-title {
 		font-size: 13px;
 		font-weight: 600;
-		color: #374151;
+		color: var(--sidebar-foreground);
 		margin-bottom: 6px;
 	}
 
@@ -80,7 +80,7 @@
 	.label {
 		min-width: 80px;
 		font-weight: 500;
-		color: #4b5563;
+		color: var(--muted-foreground);
 	}
 
 	.list {
@@ -96,7 +96,7 @@
 	}
 
 	a {
-		color: #2563eb;
+		color: var(--sidebar-primary);
 		text-decoration: none;
 	}
 

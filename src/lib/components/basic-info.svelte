@@ -37,6 +37,6 @@
 	.label {
 		min-width: 80px;
 		font-weight: 500;
-		color: #4b5563;
+		color: var(--muted-foreground);
 	}
 </style>

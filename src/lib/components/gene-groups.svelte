@@ -23,7 +23,7 @@
 	.section-title {
 		font-size: 13px;
 		font-weight: 600;
-		color: #374151;
+		color: var(--sidebar-foreground);
 		margin-bottom: 6px;
 	}
 
@@ -36,8 +36,8 @@
 	.chip {
 		padding: 2px 8px;
 		font-size: 11px;
-		background: #eff6ff;
-		color: #1d4ed8;
+		background: var(--sidebar-accent);
+		color: var(--sidebar-accent-foreground);
 		border-radius: 999px;
 	}
 </style>
