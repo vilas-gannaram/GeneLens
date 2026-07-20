@@ -1,4 +1,24 @@
+import type { TGeneData } from './lib/types';
+
 chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
+
+let geneIndexPromise: Promise<{ data: TGeneData; bySymbolUpper: Map<string, string> }> | null =
+	null;
+
+function loadGeneIndex() {
+	if (!geneIndexPromise) {
+		geneIndexPromise = fetch(chrome.runtime.getURL('hgnc_dataset.json'))
+			.then((res) => res.json())
+			.then((data: TGeneData) => {
+				const bySymbolUpper = new Map<string, string>();
+				for (const key of Object.keys(data)) {
+					bySymbolUpper.set(key.toUpperCase(), key);
+				}
+				return { data, bySymbolUpper };
+			});
+	}
+	return geneIndexPromise;
+}
 
 chrome.commands.onCommand.addListener(async (command) => {
 	if (command !== 'open-side-panel') return;
@@ -22,11 +42,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	}
 
 	if (message.type === 'FETCH_GENE') {
-		console.log('📩 Received message in background:', message.symbol);
-
-		fetch(chrome.runtime.getURL('hgnc_dataset.json'))
-			.then((res) => res.json())
-			.then((data) => sendResponse({ gene: data[message.symbol] }))
+		loadGeneIndex()
+			.then(({ data, bySymbolUpper }) => {
+				const key = bySymbolUpper.get(message.symbol.toUpperCase());
+				sendResponse({ gene: key ? data[key] : undefined });
+			})
 			.catch((err) => sendResponse({ error: err.message }));
 
 		// 👇 IMPORTANT: return true to allow async response
