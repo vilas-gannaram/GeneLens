@@ -1,4 +1,12 @@
-document.addEventListener('dblclick', () => {
+function isEditableTarget(target: EventTarget | null): boolean {
+	if (!(target instanceof HTMLElement)) return false;
+	if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) return true;
+	return target.isContentEditable;
+}
+
+document.addEventListener('dblclick', (event) => {
+	if (isEditableTarget(event.target)) return;
+
 	const selection = document.getSelection();
 	if (!selection || !selection.rangeCount) return;
 
